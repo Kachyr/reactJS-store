@@ -1,23 +1,42 @@
-
-.navbar{
-
+.navbar {
+  margin: 0;
+  padding: 1rem;
+  overflow: hidden;
+  background-color: #333;
 }
 
-
-
-.navbar-logo{
-  
-}
-.navbarPanel{
-
-}
-.navItem{
-
+.logo {
+  color: white;
+  margin-right: 10px;
 }
 
-.navLink{
-
+/* .navbarPanel {
+} */
+.navItem {
+  float: left;
 }
-.navLinkCart{
-  
+
+.navLink {
+}
+.navItem .navLink {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.navLinkCart {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  float: right;
+}
+
+.navItem .navLink:hover {
+  background-color: #111;
+}
+.navCart .navLinkCart:hover{
+  background-color: #111;
 }
