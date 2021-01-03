@@ -1,0 +1,42 @@
+
+.cartButtonAdd {
+  background: #2ecc71;
+  border: none;
+  font-family: 'Lato';
+  font-size: inherit;
+
+  cursor: pointer;
+  padding: 10px 35px;
+  display: inline-block;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+
+  transition: all 0.3s;
+  width: 100%;
+}
+.cartButtonAdd:hover {
+  background: #27ae60;
+}
+.cartButtonAdd:active {
+  background: #27ae60;
+  top: 2px;
+}
+.cartButtonAdd:before {
+  font-family: 'FontAwesome';
+
+  text-transform: none;
+  line-height: 1;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+.cartButtonAdd:after {
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}

@@ -7,5 +7,8 @@ const instance = axios.create({
 export const productsAPI = {
   getProducts() {
     return instance.get(`products`).then((response) => response.data);
+  },
+  getOneProduct(userId) {
+    return instance.get(`products/${userId}`).then((response) => response.data);
   }
 };

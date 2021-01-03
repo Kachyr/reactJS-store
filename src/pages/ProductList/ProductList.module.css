@@ -1,0 +1,23 @@
+.productsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3px;
+}
+.itemContainer {
+  display: flex;
+  border: black solid 1px;
+  flex-direction: column;
+}
+.property {
+  list-style: none;
+  margin-bottom: 3px;
+}
+.link {
+  list-style: none;
+  text-decoration: none;
+  align-self: center;
+  
+  color: black;
+  margin: 3px;
+
+}
