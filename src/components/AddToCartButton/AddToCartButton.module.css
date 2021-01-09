@@ -1,8 +1,7 @@
-
 .cartButtonAdd {
   background: #2ecc71;
   border: none;
-  font-family: 'Lato';
+  font-family: "Lato";
   font-size: inherit;
 
   cursor: pointer;
@@ -26,7 +25,7 @@
   top: 2px;
 }
 .cartButtonAdd:before {
-  font-family: 'FontAwesome';
+  font-family: "FontAwesome";
 
   text-transform: none;
   line-height: 1;

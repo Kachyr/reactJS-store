@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
-import { AppContext } from '../../store/Context';
-import styles from './Navbar.module.css';
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { routeTo } from "../../navlinkURLs/routePath";
+import { AppContext } from "../../store/Context";
+import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
-  let { setAddedPoroducts } = useContext(AppContext);
-  console.log(setAddedPoroducts());
+  const { addedPoroducts, priceOfProducts } = useContext(AppContext);
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.navItem}>
@@ -14,7 +15,11 @@ export const Navbar = () => {
 
       <div className={styles.navbarPanel}>
         <div className={styles.navItem}>
-          <NavLink className={styles.navLink} to="/" exact>
+          <NavLink
+            className={styles.navLink}
+            to={routeTo.HOME_PRODUCTS_LIST}
+            exact
+          >
             <h4>
               <u>Products</u>
             </h4>
@@ -22,13 +27,13 @@ export const Navbar = () => {
         </div>
       </div>
       <div className={styles.navCart}>
-        <NavLink className={styles.navLinkCart} to="/cart">
+        <NavLink className={styles.navLinkCart} to={routeTo.CART}>
           <h4>
             <span>Cart</span>
           </h4>
-          <span>Items in cart - {setAddedPoroducts()[0]}</span>
-          <hr/>
-          <span>Total price is - {setAddedPoroducts()[1]}</span>
+          <span>Items in cart - {addedPoroducts}</span>
+          <hr />
+          <span>Total price is - {priceOfProducts} $</span>
         </NavLink>
       </div>
     </nav>
