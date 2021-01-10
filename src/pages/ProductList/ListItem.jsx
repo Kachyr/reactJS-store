@@ -1,13 +1,14 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { AddToCartButton } from "../../components/AddToCartButton/AddToCartButton";
-import styles from "./ProductList.module.css";
-import PropTypes from "prop-types";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { AddToCartButton } from '../../components/AddToCartButton/AddToCartButton';
+import styles from './ProductList.module.css';
+import PropTypes from 'prop-types';
+import { routeTo } from '../../navlinkURLs/routePath';
 
 export const ListItem = ({ product }) => {
   return (
     <div className={styles.itemContainer}>
-      <NavLink to={"/product/" + product.id} className={styles.link}>
+      <NavLink to={routeTo.PRODUCT + product.id} className={styles.link}>
         Visit product page
       </NavLink>
       <ul>
@@ -29,6 +30,17 @@ ListItem.propTypes = {
     price: PropTypes.number.isRequired,
     origin: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
-    updatedAt: PropTypes.string.isRequired,
-  }),
+    updatedAt: PropTypes.string.isRequired
+  })
+};
+ListItem.defaultProps = {
+  product: PropTypes.shape({
+    isEditable: true,
+    id: 'string',
+    name: 'string',
+    price: 0,
+    origin: 'europe',
+    createdAt: 'string',
+    updatedAt: 'string'
+  })
 };
