@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
-import { productsAPI } from "../../api/api";
-import { AddToCartButton } from "../../components/AddToCartButton/AddToCartButton";
-import PropTypes from "prop-types";
-import styles from "./Product.module.css";
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
+import { productsAPI } from '../../api/api';
+import { AddToCartButton } from '../../components/AddToCartButton/AddToCartButton';
+import PropTypes from 'prop-types';
+import styles from './Product.module.css';
 
 const Product = ({ match }) => {
   const initialState = {
-    id: "string",
-    name: "string",
+    id: 'string',
+    name: 'string',
     price: 0,
-    origin: "europe",
-    createdAt: "string",
-    updatedAt: "string",
-    isEditable: true,
+    origin: 'europe',
+    createdAt: 'string',
+    updatedAt: 'string',
+    isEditable: true
   };
 
   const [state, setstate] = useState(initialState);
   useEffect(() => {
-    productsAPI
-      .getOneProduct(match.params.productId)
-      .then((response) => setstate(response));
+    productsAPI.getOneProduct(match.params.productId).then((response) => setstate(response));
   }, []);
 
   return (
@@ -40,5 +38,5 @@ const Product = ({ match }) => {
 export default withRouter(Product);
 
 Product.propTypes = {
-  match: PropTypes.object.isRequired,
+  match: PropTypes.object
 };

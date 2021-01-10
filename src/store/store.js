@@ -1,9 +1,9 @@
-import React, { useMemo, useReducer } from "react";
-import { productsAPI } from "../api/api.js";
-import { AppContext } from "./Context.js";
-import { productsListReducer } from "./reducers/productListReducer.js";
-import { ADD_PRODUCT, SET_PRODUCTS } from "./reducers/types.js";
-import PropTypes from "prop-types";
+import React, { useMemo, useReducer } from 'react';
+import { productsAPI } from '../api/api.js';
+import { AppContext } from './Context.js';
+import { productsListReducer } from './reducers/productListReducer.js';
+import { ADD_PRODUCT, SET_PRODUCTS } from './reducers/types.js';
+import PropTypes from 'prop-types';
 
 export const AppState = ({ children }) => {
   const initState = {
@@ -14,15 +14,15 @@ export const AppState = ({ children }) => {
       items: [
         {
           isEditable: false,
-          id: "357d769d-8146-4e2e-845a-b462f0569cbf",
-          name: "Generic Steel Fish",
-          price: 143,
-          origin: "asia",
-          createdAt: "2020-12-22T17:28:32.126Z",
-          updatedAt: "2020-12-22T17:28:32.126Z",
-        },
-      ],
-    },
+          id: '357d769d-8146-4e2e-845a-b462f0569cbf',
+          name: 'This is initial state',
+          price: 420,
+          origin: 'ua',
+          createdAt: '2020-12-22T17:28:32.126Z',
+          updatedAt: '2020-12-22T17:28:32.126Z'
+        }
+      ]
+    }
   };
 
   const [state, dispatch] = useReducer(productsListReducer, initState);
@@ -40,8 +40,7 @@ export const AppState = ({ children }) => {
   }, [state.products.items]);
 
   const addedPoroducts = useMemo(() => {
-    return state.products.items.filter((item) => item.isEditable === true)
-      .length;
+    return state.products.items.filter((item) => item.isEditable === true).length;
   }, [state.products.items]);
 
   //ACTION CREATORS
@@ -61,14 +60,13 @@ export const AppState = ({ children }) => {
         getProducts,
         addOrRemoveProduct,
         addedPoroducts,
-        priceOfProducts,
-      }}
-    >
+        priceOfProducts
+      }}>
       {children}
     </AppContext.Provider>
   );
 };
 
 AppState.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired
 };

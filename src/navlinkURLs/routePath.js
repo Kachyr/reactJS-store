@@ -1,5 +1,6 @@
 export const routeTo = {
-  HOME_PRODUCTS_LIST: "/",
-  PRODUCT_ID: "/product/:productId?",
-  CART: "/cart",
+  HOME_PRODUCTS_LIST: '/',
+  PRODUCT_ID: '/product/:productId?',
+  CART: '/cart',
+  PRODUCT: '/product/'
 };
