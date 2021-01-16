@@ -1,7 +1,9 @@
 import * as axios from 'axios';
-import { PRODUCTS } from './urls';
+import { PRODUCTS } from './urlsConst';
 
 const instance = axios.create({
+  // як тільки дойдуть руки пофікшу лінтер
+  // eslint-disable-next-line no-undef
   baseURL: process.env.REACT_APP_MAIN_URL_ADDRES
 });
 
