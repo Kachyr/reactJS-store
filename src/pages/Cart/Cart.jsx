@@ -1,19 +1,19 @@
-import React, { useContext } from "react";
-import { AppContext } from "../../store/Context";
-import { ListItem } from "../ProductList/ListItem";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ADD_PRODUCT } from '../../store/reducers/productsList/productListSlice';
+import { selectProductList } from '../../store/reducers/productsList/selectors';
+
+import { ListItem } from '../ProductList/ListItem';
 
 export const Cart = () => {
-  const { state, addOrRemoveProduct } = useContext(AppContext);
+  const dispatch = useDispatch();
+
+  const productListItems = useSelector(selectProductList);
+  const addOrRemoveProduct = (id) => dispatch(ADD_PRODUCT(id));
   return (
     <div>
-      {state.products.items.map((item) => {
-        return item.isEditable ? (
-          <ListItem
-            key={item.id}
-            product={item}
-            addOrRemoveProduct={addOrRemoveProduct}
-          />
-        ) : null;
+      {productListItems.map((item) => {
+        return item.isEditable ? <ListItem key={item.id} product={item} addOrRemoveProduct={addOrRemoveProduct} /> : null;
       })}
     </div>
   );

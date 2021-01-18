@@ -1,26 +1,18 @@
-import React, { useContext, useEffect } from "react";
-import { AppContext } from "../../store/Context";
-import { ListItem } from "./ListItem";
-import styles from "./ProductList.module.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { ListItem } from './ListItem';
+import styles from './ProductList.module.css';
 
-export const ProductList = () => {
-  const { state, getProducts, addOrRemoveProduct } = useContext(AppContext);
-
-  useEffect(() => {
-    if (state.products.items.length < 2) getProducts();
-  }, []);
-
+export const ProductList = ({ state, addOrRemoveProduct }) => {
   return (
     <div className={styles.productsContainer}>
-      {state.products.items.map((item) => {
-        return (
-          <ListItem
-            key={item.id}
-            product={item}
-            addOrRemoveProduct={addOrRemoveProduct}
-          />
-        );
+      {state.map((item) => {
+        return <ListItem key={item.id} product={item} addOrRemoveProduct={addOrRemoveProduct} />;
       })}
     </div>
   );
+};
+ProductList.propTypes = {
+  state: PropTypes.array,
+  addOrRemoveProduct: PropTypes.func
 };
