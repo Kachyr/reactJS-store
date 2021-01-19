@@ -13,7 +13,7 @@ export const Cart = () => {
   return (
     <div>
       {productListItems.map((item) => {
-        return item.isEditable ? <ListItem key={item.id} product={item} addOrRemoveProduct={addOrRemoveProduct} /> : null;
+        return <ListItem key={item.id} product={item} addOrRemoveProduct={addOrRemoveProduct} />;
       })}
     </div>
   );

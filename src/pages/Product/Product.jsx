@@ -30,7 +30,7 @@ const Product = ({ match }) => {
         <li className={styles.property}>{state.origin}</li>
         <li className={styles.property}> Price: {state.price} $</li>
       </ul>
-      <AddToCartButton productID={state.id} isEditable={state.isEditable} />
+      <AddToCartButton productID={state.id} />
     </div>
   );
 };

@@ -17,7 +17,7 @@ export const ListItem = ({ product }) => {
         <li className={styles.property}> Price: {product.price} $</li>
       </ul>
 
-      <AddToCartButton productId={product.id} isEditable={product.isEditable} />
+      <AddToCartButton productId={product.id} />
     </div>
   );
 };
