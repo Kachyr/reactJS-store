@@ -2,20 +2,23 @@ import React from 'react';
 import styles from './AddToCartButton.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { ADD_PRODUCT } from '../../store/reducers/productsList/productListSlice';
+import { ADD_PRODUCT, REMOVE_PRODUCT } from '../../store/reducers/productsList/productListSlice';
+import { useItemFlag } from '../common/hooks/useItemFlag';
 
-export const AddToCartButton = ({ productId, isEditable }) => {
+export const AddToCartButton = ({ productId }) => {
   const dispatch = useDispatch();
-  const addOrRemoveProduct = (id) => dispatch(ADD_PRODUCT(id));
 
-  const addOrRemoveProductHendler = () => {
-    addOrRemoveProduct(productId);
+  const addHendler = () => {
+    dispatch(ADD_PRODUCT(productId));
+  };
+  const removeHendler = () => {
+    dispatch(REMOVE_PRODUCT(productId));
   };
   return (
     <>
       {
-        <button className={styles.cartButtonAdd} onClick={addOrRemoveProductHendler}>
-          {!isEditable ? 'Add to Cart' : 'Remove from Cart'}
+        <button className={styles.cartButtonAdd} onClick={useItemFlag(productId) ? removeHendler : addHendler}>
+          {!useItemFlag(productId) ? 'Add to Cart' : 'Remove from Cart'}
         </button>
       }
     </>
@@ -23,6 +26,5 @@ export const AddToCartButton = ({ productId, isEditable }) => {
 };
 
 AddToCartButton.propTypes = {
-  productId: PropTypes.string,
-  isEditable: PropTypes.bool
+  productId: PropTypes.string
 };
