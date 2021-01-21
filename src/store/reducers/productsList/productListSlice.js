@@ -52,20 +52,22 @@ export const productListSlice = createSlice({
       const item = state.items.find((obj) => obj.id === action.payload);
       item.quantity++;
       state.total += item.price;
-    }
+    },
+    SUB_QUANTITY: (state, action) => {
+      const item = state.items.find((obj) => obj.id === action.payload);
+      if (item.quantity === 1) {
+        const newItems = state.itemsInCart.filter((obj) => obj.id !== action.payload);
+        (state.itemsInCart = newItems), (state.total -= item.price);
+      } else {
+        item.quantity--;
+        state.total -= item.price;
+      }
+    },
+    IN
     // PRODUCTS_LOADING: (state) => {},
     // PRODUCTS_SUCCESS: (state) => {},
     // PRODUCTS_ERROR: (state) => {}
-  },
-  SUB_QUANTITY: (state, action) => {
-    const item = state.items.find((obj) => obj.id === action.payload);
-    if (item.quantity === 1) {
-      const newItems = state.itemsInCart.filter((obj) => obj.id !== action.payload);
-      (state.itemsInCart = newItems), (state.total -= item.price);
-    } else {
-      item.quantity--;
-      state.total -= item.price;
-    }
+    //,
   }
 });
 

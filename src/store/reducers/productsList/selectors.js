@@ -6,6 +6,7 @@ export const priceOfProducts = (state) => state.products.total;
 
 export const addedPoroducts = (state) => state.products.itemsInCart.length;
 
+export const cartContents = createSelector();
 //createSelector(selectProductList, (items) => {
 //   return items.filter((item) => item.isEditable === true).length;
 // });
