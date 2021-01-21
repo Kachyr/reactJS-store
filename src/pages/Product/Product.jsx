@@ -1,42 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { productsAPI } from '../../api/api';
-import { AddToCartButton } from '../../components/AddToCartButton/AddToCartButton';
 import PropTypes from 'prop-types';
+import React from 'react';
 import styles from './Product.module.css';
 
-const Product = ({ match }) => {
-  const initialState = {
+export const Product = ({ product }) => {
+  return (
+    <>
+      <div>
+        <h2>{product.name}</h2>
+      </div>
+      <ul>
+        <li className={styles.property}>{product.origin}</li>
+        <li className={styles.property}> Price: {product.price} $</li>
+      </ul>
+    </>
+  );
+};
+Product.propTypes = {
+  product: PropTypes.shape({
+    isEditable: PropTypes.bool.isRequired,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    origin: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired
+  })
+};
+Product.defaultProps = {
+  product: PropTypes.shape({
+    isEditable: true,
     id: 'string',
     name: 'string',
     price: 0,
     origin: 'europe',
     createdAt: 'string',
-    updatedAt: 'string',
-    isEditable: true
-  };
-
-  const [state, setstate] = useState(initialState);
-  useEffect(() => {
-    productsAPI.getOneProduct(match.params.productId).then((response) => setstate(response));
-  }, []);
-
-  return (
-    <div className={styles.itemContainer}>
-      <div>
-        <h2>{state.name}</h2>
-      </div>
-      <ul>
-        <li className={styles.property}>{state.origin}</li>
-        <li className={styles.property}> Price: {state.price} $</li>
-      </ul>
-      <AddToCartButton productID={state.id} />
-    </div>
-  );
-};
-
-export default withRouter(Product);
-
-Product.propTypes = {
-  match: PropTypes.object
+    updatedAt: 'string'
+  })
 };
