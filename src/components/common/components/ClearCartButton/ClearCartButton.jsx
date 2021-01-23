@@ -1,18 +1,13 @@
 import { useDispatch } from 'react-redux';
-import { productsAPI } from '../../../../api/api';
-import { SET_PRODUCTS } from '../../../../store/reducers/productsList/productListSlice';
+
+import { CLEAR_CART } from '../../../../store/reducers/productsList/productListSlice.js';
 
 export const ClearCartButton = () => {
   const dispatch = useDispatch();
-  const getProducts = async () => {
-    const setProducts = (products) => dispatch(SET_PRODUCTS(products));
-
-    let resp = await productsAPI.getProducts();
-    setProducts(resp);
-  };
+  const clearHendrler = () => dispatch(CLEAR_CART);
   return (
     <div>
-      <button onClick={getProducts}>Clear Cart</button>
+      <button onClick={clearHendrler}>Clear Cart</button>
     </div>
   );
 };

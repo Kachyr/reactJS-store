@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { routeTo } from '../../navlinkURLs/routePath';
-import { addedPoroducts, priceOfProducts } from '../../store/reducers/productsList/selectors';
+import { addedPoroducts, priceOfProducts } from '../../store/reducers/selectors';
 
 import styles from './Navbar.module.css';
 

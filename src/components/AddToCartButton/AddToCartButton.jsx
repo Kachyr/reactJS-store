@@ -2,17 +2,17 @@ import React from 'react';
 import styles from './AddToCartButton.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { ADD_PRODUCT, REMOVE_PRODUCT } from '../../store/reducers/productsList/productListSlice';
+import { ADD_PRODUCT_TO_CART, REMOVE_PRODUCT_FROM_CART } from '../../store/reducers/productsList/productListSlice';
 import { useItemFlag } from '../common/hooks/useItemFlag';
 
 export const AddToCartButton = ({ productId }) => {
   const dispatch = useDispatch();
 
   const addHendler = () => {
-    dispatch(ADD_PRODUCT(productId));
+    dispatch(ADD_PRODUCT_TO_CART(productId));
   };
   const removeHendler = () => {
-    dispatch(REMOVE_PRODUCT(productId));
+    dispatch(REMOVE_PRODUCT_FROM_CART(productId));
   };
   return (
     <>
