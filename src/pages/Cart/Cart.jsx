@@ -1,21 +1,19 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { ClearCartButton } from '../../components/common/components/ClearCartButton/ClearCartButton';
-import { ADD_PRODUCT } from '../../store/reducers/productsList/productListSlice';
-import { selectItemsInCart } from '../../store/reducers/productsList/selectors';
 
-import { ListItem } from '../ProductList/ListItem';
+import { selectItemsInCart } from '../../store/reducers/selectors';
+
+import { CartItem } from './CartItem';
 
 export const Cart = () => {
-  const dispatch = useDispatch();
-
   const productListItems = useSelector(selectItemsInCart);
-  const addOrRemoveProduct = (id) => dispatch(ADD_PRODUCT(id));
+
   return (
     <div>
-      <ClearCartButton />
+      {productListItems.length ? <ClearCartButton /> : <h2>Cart is empty!</h2>}
       {productListItems.map((item) => {
-        return <ListItem key={item.id} product={item} addOrRemoveProduct={addOrRemoveProduct} />;
+        return <CartItem key={item.id} product={item} />;
       })}
     </div>
   );
