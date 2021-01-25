@@ -11,9 +11,9 @@ export const ChengeItemQuantyty = ({ id, quantity }) => {
   const decrement = () => dispatch(SUB_QUANTITY(id));
   return id ? (
     <div>
-      <button onClick={increment}>+</button>
-      <p>{quantity}</p>
       <button onClick={decrement}>-</button>
+      <span> {quantity} </span>
+      <button onClick={increment}>+</button>
     </div>
   ) : null;
 };

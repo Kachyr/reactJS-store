@@ -13,5 +13,8 @@ export const productsAPI = {
   },
   getOneProduct(userId) {
     return instance.get(`${PRODUCTS}/${userId}`).then((response) => response.data);
+  },
+  getFilteredProducts(page, perPage, origins, minPrice, maxPrice) {
+    return instance.get(`${PRODUCTS}/?page=${page}&perPage=${perPage}&origins=${origins}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
   }
 };
