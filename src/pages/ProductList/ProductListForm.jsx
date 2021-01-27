@@ -16,7 +16,7 @@ export const ProductListForm = () => {
     const { page, perPage, origins, minPrice, maxPrice } = value;
     try {
       const response = await productsAPI.getFilteredProducts(page, perPage, origins, minPrice, maxPrice);
-
+      console.log(response);
       dispatch(PRODUCTS_SUCCESS(response));
     } catch (error) {
       console.log(error);
