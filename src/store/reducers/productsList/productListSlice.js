@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { addQuantity } from '../../helpers';
 
 const initialState = {
-  // error: null,
-  // loading: false,
-  // succeed: false,
+  error: null,
+  loading: false,
+  succeed: false,
   itemsInCart: [],
   page: 1,
   perPage: 50,
@@ -16,19 +16,18 @@ const productListSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    // PRODUCTS_LOADING: (state) => {
-    //   state.error = null;
-    //   state.loading = true;
-    // },
-    // PRODUCTS_ERROR: (state, action) => {
-    //   state.loading = false;
-    //   state.error = action.payload;
-    // },
+    PRODUCTS_LOADING: (state) => {
+      state.error = null;
+      state.loading = true;
+    },
+    PRODUCTS_ERROR: (state, action) => {
+      console.log(action);
+      state.loading = false;
+      state.error = action.payload;
+    },
     PRODUCTS_SUCCESS: (state, action) => {
-      // state.succeed = true;
-      // state.loading = false;
       const newItems = addQuantity(action.payload.items);
-      return { ...state, ...action.payload, newItems };
+      return { ...state, ...action.payload, newItems, succeed: true, loading: false };
     },
 
     ADD_PRODUCT_TO_CART: (state, action) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { ADD_QUANTITY, SUB_QUANTITY } from '../../../../store/reducers/productsList/productListSlice';
@@ -7,8 +7,8 @@ import { ADD_QUANTITY, SUB_QUANTITY } from '../../../../store/reducers/productsL
 export const ChengeItemQuantyty = ({ id, quantity }) => {
   const dispatch = useDispatch();
 
-  const increment = () => dispatch(ADD_QUANTITY(id));
-  const decrement = () => dispatch(SUB_QUANTITY(id));
+  const increment = useCallback(() => dispatch(ADD_QUANTITY(id)), [id]);
+  const decrement = useCallback(() => dispatch(SUB_QUANTITY(id)), [id]);
   return id ? (
     <div>
       <button onClick={decrement}>-</button>

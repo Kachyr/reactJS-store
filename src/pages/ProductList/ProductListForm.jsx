@@ -1,7 +1,6 @@
 import { Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { productsAPI } from '../../api/api';
-import { PRODUCTS_SUCCESS } from '../../store/reducers/productsList/productListSlice';
+import useGetFilteredProducts from './hooks/useGetFilteredProducts';
+
 import styles from './ProductList.module.css';
 export const ProductListForm = () => {
   const initialValues = {
@@ -11,20 +10,12 @@ export const ProductListForm = () => {
     minPrice: '',
     maxPrice: ''
   };
-  const dispatch = useDispatch();
-  const hendleSubmit = async (value) => {
-    const { page, perPage, origins, minPrice, maxPrice } = value;
-    try {
-      const response = await productsAPI.getFilteredProducts(page, perPage, origins, minPrice, maxPrice);
-      console.log(response);
-      dispatch(PRODUCTS_SUCCESS(response));
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
+  const { handleFilter } = useGetFilteredProducts();
+
   return (
     <div>
-      <Formik initialValues={initialValues} onSubmit={hendleSubmit}>
+      <Formik initialValues={initialValues} onSubmit={(value) => handleFilter(value)}>
         {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             <div className={styles.formItem}>
