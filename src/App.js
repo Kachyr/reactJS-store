@@ -5,6 +5,7 @@ import ProductContainer from './pages/Product/ProductContainer.js';
 import { Cart } from './pages/Cart/Cart';
 import { routeTo } from './navlinkURLs/routePath';
 import { ProductListContainer } from './pages/ProductList/ProductListContainer';
+import CreateProductContainer from './pages/CreateProduct/CreateProductContainer';
 
 function App() {
   return (
@@ -14,8 +15,10 @@ function App() {
         <Switch>
           <Route path={routeTo.HOME_PRODUCTS_LIST} exact component={ProductListContainer} />
           <Route path={routeTo.PRODUCT_ID} component={ProductContainer} />
+
           <Route path={routeTo.CART} exact component={Cart} />
         </Switch>
+        <CreateProductContainer />
       </div>
     </BrowserRouter>
   );

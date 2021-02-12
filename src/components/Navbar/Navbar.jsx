@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { routeTo } from '../../navlinkURLs/routePath';
-import { addedPoroducts, priceOfProducts } from '../../store/reducers/selectors';
-
+import { addedPoroducts, priceOfProducts } from '../../store/reducers/productsList/selectors';
+import CreateProductButton from '../../pages/CreateProduct/CreateProductButton.jsx';
 import styles from './Navbar.module.css';
 
 export const Navbar = () => {
@@ -18,10 +18,11 @@ export const Navbar = () => {
       <div className={styles.navbarPanel}>
         <div className={styles.navItem}>
           <NavLink className={styles.navLink} to={routeTo.HOME_PRODUCTS_LIST} exact>
-            <h4>
-              <u>Products</u>
-            </h4>
+            <h4>Products</h4>
           </NavLink>
+        </div>
+        <div>
+          <CreateProductButton />
         </div>
       </div>
       <div className={styles.navCart}>
