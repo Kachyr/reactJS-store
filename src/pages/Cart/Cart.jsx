@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { ClearCartButton } from '../../components/common/components/ClearCartButton/ClearCartButton';
 
-import { selectItemsInCart } from '../../store/reducers/selectors';
+import { selectItemsInCart } from '../../store/reducers/productsList/selectors';
 
 import { CartItem } from './CartItem';
 

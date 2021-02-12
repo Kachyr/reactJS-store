@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectProductList } from '../../../store/reducers/selectors';
+import { selectProductList } from '../../../store/reducers/productsList/selectors';
 
 export const useSingleProduct = (id) => {
   const itemsInCart = useSelector(selectProductList);

@@ -32,10 +32,7 @@ const productListSlice = createSlice({
 
     ADD_PRODUCT_TO_CART: (state, action) => {
       //find the item to push
-
       const item = state.items.find((obj) => obj.id === action.payload);
-
-      console.log(item);
       state.itemsInCart.push(item);
     },
     REMOVE_PRODUCT_FROM_CART: (state, action) => {
