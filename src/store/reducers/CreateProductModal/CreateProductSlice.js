@@ -19,8 +19,7 @@ const createProductSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
-    PRODUCTS_SUCCESS: (state, action) => {
-      console.log(action);
+    PRODUCTS_SUCCESS: (state) => {
       return { ...state, isOpen: false, succeed: true, loading: false };
     },
     OPEN_MODAL: (state) => {

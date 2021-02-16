@@ -9,7 +9,7 @@ const useGetFilteredProducts = () => {
     ({ page, perPage, origins, minPrice, maxPrice }) => {
       dispatch(PRODUCTS_LOADING());
       productsAPI
-        .getFilteredProducts(page, perPage, origins, minPrice, maxPrice)
+        .getProducts(page, perPage, origins, minPrice, maxPrice)
         .then((response) => {
           dispatch(PRODUCTS_SUCCESS(response));
         })

@@ -6,6 +6,7 @@ import usePostProduct from './hooks/usePostProduct';
 
 const CreateProduct = ({ isOpen, closeModalHandler }) => {
   const { handleSubmit } = usePostProduct();
+  const originArr = ['europe', 'usa', 'africa', 'asia'];
   return (
     <>
       {isOpen ? (
@@ -26,10 +27,9 @@ const CreateProduct = ({ isOpen, closeModalHandler }) => {
                     <label htmlFor="origin">Select origin:</label>
                     <Field name="origin" as="select">
                       <option value="" label="select country" />
-                      <option value="europe" label="Europe" />
-                      <option value="usa" label="USA" />
-                      <option value="africa" label="Africa" />
-                      <option value="asia" label="Asia" />
+                      {originArr.map((item) => {
+                        return <option key={item} value={item} label={item} />;
+                      })}
                     </Field>
                   </FormItemWrapper>
                   {errors.origin && touched.origin ? <ErrorDiv>{errors.origin}</ErrorDiv> : null}
