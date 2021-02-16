@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CLOSE_MODAL } from '../../store/reducers/CreateProductModal/CreateProductSlice';
 import { selectModalIsOpen } from '../../store/reducers/CreateProductModal/selectors';
@@ -9,9 +9,9 @@ const CreateProductContainer = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector(selectModalIsOpen);
 
-  const closeModalHandler = () => {
+  const closeModalHandler = useCallback(() => {
     dispatch(CLOSE_MODAL());
-  };
+  }, [dispatch]);
 
   return ReactDOM.createPortal(
     <CreateProduct isOpen={isOpen} closeModalHandler={closeModalHandler} />,
