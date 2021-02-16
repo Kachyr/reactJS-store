@@ -1,22 +1,40 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { productsAPI } from '../../../api/api';
-import { PRODUCTS_ERROR, PRODUCTS_LOADING, PRODUCTS_SUCCESS } from '../../../store/reducers/productsList/productListSlice';
+import { PRODUCTS_LOADING } from '../../../store/reducers/productsList/productListSlice';
+import { GET_PRODUCT_SAGA } from '../../../store/sagas/actionsForSaga';
 
 const useGetFilteredProducts = () => {
   const dispatch = useDispatch();
   const handleFilter = useCallback(
-    ({ page, perPage, origins, minPrice, maxPrice }) => {
+    (obj) => {
       dispatch(PRODUCTS_LOADING());
-      productsAPI
-        .getProducts(page, perPage, origins, minPrice, maxPrice)
-        .then((response) => {
-          dispatch(PRODUCTS_SUCCESS(response));
-        })
-        .catch((error) => dispatch(PRODUCTS_ERROR(error)));
+      dispatch({ type: GET_PRODUCT_SAGA, payload: obj });
+      // productsAPI
+      //   .getProducts(obj)
+      //   .then((response) => {
+      //     dispatch(PRODUCTS_SUCCESS(response));
+      //   })
+      //   .catch((error) => dispatch(PRODUCTS_ERROR(error)));
     },
     [dispatch]
   );
   return { handleFilter };
 };
 export default useGetFilteredProducts;
+// const useGetFilteredProducts = () => {
+//   const dispatch = useDispatch();
+//   const handleFilter = useCallback(
+//     (obj) => {
+//       dispatch(PRODUCTS_LOADING());
+//       productsAPI
+//         .getProducts(obj)
+//         .then((response) => {
+//           dispatch(PRODUCTS_SUCCESS(response));
+//         })
+//         .catch((error) => dispatch(PRODUCTS_ERROR(error)));
+//     },
+//     [dispatch]
+//   );
+//   return { handleFilter };
+// };
+// export default useGetFilteredProducts;

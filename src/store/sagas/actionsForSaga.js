@@ -1,0 +1,1 @@
+export const GET_PRODUCT_SAGA = 'GET_PRODUCT_SAGA';

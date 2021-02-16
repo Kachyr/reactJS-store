@@ -17,7 +17,7 @@ export const apiRequest = (method, url, data, params) => {
 };
 
 export const productsAPI = {
-  getProducts(page, perPage, origins, minPrice, maxPrice) {
+  getProducts({ page, perPage, origins, minPrice, maxPrice }) {
     return apiRequest('get', PRODUCTS, null, { page, perPage, origins, minPrice, maxPrice }).then((response) => response.data);
   },
   postCreateProduct(obj) {
