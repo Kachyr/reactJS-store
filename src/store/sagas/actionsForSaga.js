@@ -1,1 +1,2 @@
 export const GET_PRODUCT_SAGA = 'GET_PRODUCT_SAGA';
+export const POST_PRODUCT_SAGA = 'POST_PRODUCT_SAGA';

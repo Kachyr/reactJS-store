@@ -17,6 +17,7 @@ export const apiRequest = (method, url, data, params) => {
 };
 
 export const productsAPI = {
+  // For this function: if you do not pass any params you should pass empty object {}
   getProducts({ page, perPage, origins, minPrice, maxPrice }) {
     return apiRequest('get', PRODUCTS, null, { page, perPage, origins, minPrice, maxPrice }).then((response) => response.data);
   },
