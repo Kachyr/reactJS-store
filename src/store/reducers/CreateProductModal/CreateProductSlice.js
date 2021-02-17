@@ -10,16 +10,16 @@ const createProductSlice = createSlice({
   name: 'createProduct',
   initialState,
   reducers: {
-    PRODUCTS_LOADING: (state) => {
+    PRODUCT_LOADING: (state) => {
       state.error = null;
       state.loading = true;
     },
-    PRODUCTS_ERROR: (state, action) => {
+    PRODUCT_ERROR: (state, action) => {
       alert(action);
       state.loading = false;
       state.error = action.payload;
     },
-    PRODUCTS_SUCCESS: (state) => {
+    PRODUCT_SUCCESS: (state) => {
       return { ...state, isOpen: false, succeed: true, loading: false };
     },
     OPEN_MODAL: (state) => {
@@ -30,6 +30,6 @@ const createProductSlice = createSlice({
     }
   }
 });
-export const { OPEN_MODAL, CLOSE_MODAL, PRODUCTS_LOADING, PRODUCTS_ERROR, PRODUCTS_SUCCESS } = createProductSlice.actions;
+export const { OPEN_MODAL, CLOSE_MODAL, PRODUCT_LOADING, PRODUCT_ERROR, PRODUCT_SUCCESS } = createProductSlice.actions;
 
 export default createProductSlice.reducer;
