@@ -1,6 +1,6 @@
 export const routeTo = {
   HOME_PRODUCTS_LIST: '/',
-  PRODUCT_ID: '/product/:productId?',
+  PRODUCT_ID: '/products/:productId?',
   CART: '/cart',
-  PRODUCT: '/product/'
+  PRODUCT: '/products/'
 };

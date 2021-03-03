@@ -21,6 +21,9 @@ export const productsAPI = {
   getProducts({ page, perPage, origins, minPrice, maxPrice }) {
     return apiRequest('get', PRODUCTS, null, { page, perPage, origins, minPrice, maxPrice }).then((response) => response.data);
   },
+  getSingleProduct(id) {
+    return apiRequest('get', PRODUCTS + id).then((response) => response.data);
+  },
   postCreateProduct(obj) {
     return apiRequest('post', PRODUCTS, { product: obj }).then((response) => response.data);
   }
